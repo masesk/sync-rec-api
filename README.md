@@ -1,70 +1,38 @@
-### Download the Models
+# sync-rec-api
 
-Run the **getModels.sh** file from command line to download the needed model files
+A Flask server that recieves images in base64 format, saves them, and pass them to a neural network for object reconition using OpenCV's YOLOv3.
 
-	sudo chmod a+x getModels.sh
-	./getModels.sh
+# Setup
 
+## Install OpenCV 
+Follow the instructions on [OpenCV's tutorial](https://docs.opencv.org/master/da/df6/tutorial_py_table_of_contents_setup.html) to install and setup OpenCV on your OS.
 
+## Install Dependencies
 
-### How to run the code
+### Requirements:
 
-Command line usage for object detection using YOLOv3 
+1. Python3
 
-* Python
+### Instructions
 
-  * A single image:
-    	
-
-    ```bash
-    python3 object_detection_yolo.py --image=bird.jpg
-    ```
-
-  * A video file:
-
-       ```bash
-       python3 object_detection_yolo.py --video=run.mp4
-       ```
-
-       
-
-* C++:
-
-  * A single image:
-        
-
-    ```bash
-    ./object_detection_yolo.out --image=bird.jpg
-    ```
-
-    
-
-  * A video file:
-
-    ```bash
-     ./object_detection_yolo.out --video=run.mp4
-    ```
-
-
-
-### Compilation examples
-
-```bash
-g++ -ggdb pkg-config --cflags --libs /usr/local/Cellar/opencv3/3.4.2/lib/pkgconfig/opencv.pc object_detection_yolo.cpp -o object_detection_yolo.out
+1. (OPTIONAL) Generate a virtual enviroment to keep pip list install clean.
+Run :
+```
+python3 -m venv .venv
+```
+2. (OPTIONAL) Activate virtual enviroment. Run:
+```
+. .venv/bin/activate
+```
+3. Install required packages. Run:
+```
+pip install -r requirements.txt
 ```
 
+## Run Flask Server
 
-
-### Results of YOLOv3
-<img src = "https://github.com/gulshan-mittal/learnopencv/blob/dev1/ObjectDetection-YOLO/bird_yolo_out_py.jpg" width = 400 height = 300/>
-
-
-# AI Courses by OpenCV
-
-Want to become an expert in AI? [AI Courses by OpenCV](https://opencv.org/courses/) is a great place to start. 
-
-<a href="https://opencv.org/courses/">
-<p align="center"> 
-<img src="https://www.learnopencv.com/wp-content/uploads/2020/04/AI-Courses-By-OpenCV-Github.png">
-</p>
-</a>
+1. To start the Flask server on port 8080, run:
+```
+python app.py
+```
+2. To change the port, modify port=8080 in app.run() function in app.py.
